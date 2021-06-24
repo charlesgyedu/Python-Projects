@@ -1,3 +1,5 @@
+# GUI calculator that allows users to perform simple arithmatics functions 
+
 #!/usr/bin/env python3
 
 from tkinter import *
