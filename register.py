@@ -3,7 +3,7 @@
 #!/usr/bin/env python3
 from tkinter import *
 import os 
-
+# closes the windows 
 def delete2():
   screen3.destroy()
 def delete3():
@@ -12,7 +12,7 @@ def delete4():
   screen5.destroy()
 def delete5():
   screen7.destroy()
-
+#new window that displays "saved" button
 def saved():
   global screen7
   screen7= Toplevel(screen)
@@ -22,7 +22,7 @@ def saved():
   Button(screen7, text= "OK", command=delete5).pack()
  
   
-
+# saves file into directory
 def save():
   filename = raw_filename.get()
   notes= raw_notes.get()
@@ -34,7 +34,7 @@ def save():
   saved()
 
 
-
+# allows user to input filename and text to create a new note
 def create_notes():
   global raw_filename
   raw_filename = StringVar()
@@ -49,7 +49,8 @@ def create_notes():
   Label(screen6, text="Please enter the notes for the file below: ").pack()
   Entry(screen6,textvariable=raw_notes).pack()
   Button(screen6,text="Save", command=save).pack()
-
+  
+# displays notes to user  
 def view_notes1():
   filename1=raw_filename1.get()
   data= open(filename1, "r")
@@ -60,7 +61,7 @@ def view_notes1():
   Label(screen8, text=data1).pack()
  
   
-
+# allows user to enter desired note to view
 def view_notes():
   screen7= Toplevel(screen)
   screen7.title("Info")
@@ -72,7 +73,7 @@ def view_notes():
   raw_filename1 = StringVar()
   Entry(screen7, textvariable=raw_filename1).pack()
   Button(screen7,command=view_notes1, text="OK").pack()
-
+#new window that deletes file and displays deleted file
 def delete_note1():
   filename3=raw_filename2.get()
   os.remove(filename3)
@@ -80,7 +81,7 @@ def delete_note1():
   screen10.title("Info")
   screen10.geometry("250x400")
   Label(screen10, text=filename3+" removed successfully").pack()
-
+# allows user to enter a file to delete 
 def delete_note():
   screen9= Toplevel(screen)
   screen9.title("Info")
@@ -94,7 +95,7 @@ def delete_note():
   Button(screen9,command=delete_note1, text="OK").pack()
 
 
-
+#displays a list of options that users can click to create,view,and delete a note
 def session():
   global screen3
   screen3= Toplevel(screen)
@@ -107,12 +108,12 @@ def session():
 
 
 
-
+#Login session
 
 def login_success():
   session()
   
-
+#displays password error window
 def password_not_recognized():
   global screen4
   screen4 = Toplevel(screen)
@@ -121,7 +122,7 @@ def password_not_recognized():
   Label(screen4, text="Password Error").pack()
   Button(screen4, text= "OK", command= delete3).pack()
 
-
+#displays user not found window
 def user_not_found():
   global screen5
   screen5 = Toplevel(screen)
@@ -130,7 +131,7 @@ def user_not_found():
   Label(screen5, text="No User Found ").pack()
   Button(screen5, text= "OK", command= delete4).pack()
 
-
+# registers user by storing username and password in a file
 def register_user():
 
   username_info = username.get()
@@ -145,7 +146,8 @@ def register_user():
   password_entry.delete(0, END)
 
   Label(screen1, text = "Registration Sucess", fg = "green" ,font = ("calibri", 11)).pack()
-
+  
+#checks if user exist in the directory
 def login_verify():
     user_name= username_verify.get()
     pass_word= password_verify.get()
@@ -162,7 +164,7 @@ def login_verify():
         password_not_recognized()
     else:
       user_not_found()
-
+# creates registration functionality
 def register():
   global screen1
   screen1 = Toplevel(screen)
@@ -186,7 +188,7 @@ def register():
   password_entry.pack()
   Label(screen1, text = "").pack()
   Button(screen1, text = "Register", width = 10, height = 1, command = register_user).pack()
-
+# creates login functionality 
 def login():
     global screen2
     screen2 = Toplevel(screen)
@@ -216,7 +218,7 @@ def login():
 
 
 
-
+#creates main window
 def main_screen():
   global screen
   screen = Tk()
