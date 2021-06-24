@@ -1,5 +1,6 @@
 #Created a login and register GUI that allows the user to create a file and edit/delete that file
 
+#!/usr/bin/env python3
 from tkinter import *
 import os 
 
